@@ -20,7 +20,7 @@ jobs:
         working-directory: src-tauri/
 
       - name: Build
-        run: cargo build --color always
+        run: cargo build --color always --release
         working-directory: src-tauri/
 
       - name: Test

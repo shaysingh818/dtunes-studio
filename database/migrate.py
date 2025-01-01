@@ -74,9 +74,7 @@ TESTING_DB_PATH = "tests"
 APP_NAME = "dtunes-audio-app"
 
 def main():
-
-    commit_test_dbs(TESTING_DB_PATH, SCRIPTS_FOLDER)
-    commit_local_storage_paths(APP_NAME, SCRIPTS_FOLDER)
+    commit(SCRIPTS_FOLDER, f'build/{APP_NAME}.sqlite3')
 
 
 main()

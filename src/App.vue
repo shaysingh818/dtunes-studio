@@ -2,24 +2,33 @@
 import NavigationBar from "./components/shared/NavigationBar.vue";
 import AudioPlayer from "./components/shared/AudioPlayer.vue";
 import { audioStore } from "./api/AudioFile";
-// import { invoke } from "@tauri-apps/api/core";
 
-// const greetMsg = ref("");
-// const name = ref("");
 
-// async function greet() {
-//   // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-//   greetMsg.value = await invoke("greet", { name: name.value });
-// }
 </script>
 
+
+<script lang="ts">
+import { checkAppDataFolders, createAppDataFolders, downloadSQLiteFile  } from "./api/Utilities";
+
+export default {
+    async mounted() {
+      if(await checkAppDataFolders() == false) {
+        console.log("No metadata folders found, creating now... ")
+        await createAppDataFolders();
+        console.log("Created metadata folders"); 
+        await downloadSQLiteFile(); 
+      }
+    }
+}
+
+</script>
 
 <template>
 
    <div class="flex">
     <NavigationBar />
     <AudioPlayer
-      v-if="(audioStore.audioFilePlaying && audioStore.audioFilePlaying.audio_file_id) || audioStore.playing == true"
+      v-if="audioStore.audioFilePlaying && audioStore.audioFilePlaying.audio_file_id"
       :audioFileId="audioStore.audioFilePlaying.audio_file_id"
       :title="audioStore.audioFilePlaying.file_name"
       :datePosted="audioStore.audioFilePlaying.date_created"

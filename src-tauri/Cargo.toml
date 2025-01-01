@@ -1,8 +1,8 @@
 [package]
 name = "dtunes-audio-app"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "Audio player with built in pomodoro timer"
+authors = ["shaysingh818"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -18,12 +18,12 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
+tauri = { version = "2", features = ["devtools"] }
 tauri-plugin-shell = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 chrono = "0.4.38"
-rusqlite = "0.32.1"
+rusqlite = { version = "0.32.1", features = ["bundled"] }
 tauri-plugin-dialog = "2"
 directories = "5.0.1"
 tauri-plugin-fs = { version = "2.0.0", features = ["watch"] }

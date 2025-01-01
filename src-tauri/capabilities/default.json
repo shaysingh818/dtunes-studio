@@ -16,6 +16,7 @@
     "fs:scope-data-index",
     "fs:allow-app-meta",
     "fs:allow-app-read",
+    "fs:allow-app-write",
     "fs:allow-exists",
     "fs:scope-app",
     "fs:allow-data-read-recursive",

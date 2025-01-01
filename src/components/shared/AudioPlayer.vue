@@ -145,7 +145,7 @@ export default {
 
         const imageUrl = URL.createObjectURL(new Blob([fileBuffer]));
         let imageElem = document.getElementById(`${this.audioFileId.toString()}-player`);
-        if(imageElem) {
+        if(imageElem && imageElem instanceof HTMLImageElement) {
           imageElem.src = imageUrl;
         } else {
           console.log(`${this.audioFileId} not found`)
@@ -169,7 +169,7 @@ export default {
     const imageUrl = URL.createObjectURL(new Blob([fileBuffer]));
     console.log("IMAGE URL: ", imageUrl)
     let imageElem = document.getElementById(`${this.audioFileId.toString()}-player`);
-    if(imageElem) {
+    if(imageElem && imageElem instanceof HTMLImageElement) {
       imageElem.src = imageUrl;
     } else {
       console.log(`${this.audioFileId} not found`)
